@@ -8,7 +8,7 @@ sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
 form = cgi.FieldStorage()
 if 'id' in form:
     pageId = form["id"].value
-    description = open('data/'+pageId, 'r', encoding='utf8').read()#'open()'함수는 3번째 인자로 인코딩을 명시해 준다.
+    description = open('data/'+pageId, 'r', encoding='utf8').read()#'open()'함수 3번째 인자로 인코딩을 명시해 준다.
 else :
     pageId='home'
     description = '환영합니다.'
