@@ -9,12 +9,15 @@ listStr=''
 for value in files:
     listStr=listStr+'<li><a href="index.py?id={name}">{name}</a></li>'.format(name=value)
 if 'id' in form:
-    pageId = form["id"].value
+    pageId = form["id"].value#'form["id"].value'가 pageid값
     description = open('data/'+pageId, 'r', encoding='utf8').read()#'open()'함수는 3번째 인자로 인코딩을 명시해 준다.
 else :
     pageId='home'
     description = '환영합니다.'
-
+if pageId == 'HTML':
+    video = '<iframe width="560" height="315" src="https://www.youtube.com/embed/RdhxukDRNH0?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>'
+else:
+    video = ''
 print('''<!DOCTYPE html>
 <html>
   <head>
@@ -29,7 +32,8 @@ print('''<!DOCTYPE html>
         {listStr}
     </ul>
     <h2>{title}</h2>
+    '''.format(listStr=listStr, title=pageId)+video+'''
     <p>{desc}</p>
   </body>
 </html>
-'''.format(title=pageId, desc=description, listStr=listStr))
+'''.format(desc=description))
